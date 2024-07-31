@@ -1,5 +1,5 @@
 """
-WSGI config for A2_Recipe_App project.
+WSGI config for final_recipe project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
