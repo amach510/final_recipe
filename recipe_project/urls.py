@@ -1,5 +1,5 @@
 """
-URL configuration for A2_Recipe_App project.
+URL configuration for recipe_project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.0/topics/http/urls/
@@ -24,11 +24,11 @@ from .views import login_view, logout_view, success_view
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", include("recipes.urls")),
-    path("", include("users.urls")),
+    path("recipes/", include("recipes.urls")),
+    path("users", include("users.urls")),
     path('login/', login_view, name='login'),
     path('logout/', logout_view, name='logout'),
     path('success/', success_view, name='success'),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

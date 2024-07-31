@@ -74,6 +74,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "recipe_project.wsgi.application"
 
+ASGI_APPLICATION = "recipe_project.asgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
