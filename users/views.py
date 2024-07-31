@@ -16,9 +16,10 @@ class profile(LoginRequiredMixin, DetailView):
     def get_object(self, queryset=None):
         user = self.request.user
         if user.is_superuser:
+            name = f"{user.first_name} {user.last_name}".strip() or user.username
             # Return a default CustomUser or create a default profile if none exists
             custom_user, created = CustomUser.objects.get_or_create(user=user, defaults={
-                'name': user.username,
+                'name': name,
                 'pic': 'no_picture.jpg',
                 'bio': 'This is an admin profile.'
             })
