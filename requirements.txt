@@ -5,10 +5,12 @@ black==24.4.2
 colorama==0.4.6
 decorator==5.1.1
 distlib==0.3.8
+dj-database-url==2.2.0
 Django==5.0.7
 executing==2.0.1
 filelock==3.14.0
 greenlet==3.0.3
+gunicorn==22.0.0
 ipython==8.25.0
 jedi==0.19.1
 matplotlib==3.9.1
@@ -20,6 +22,7 @@ parso==0.8.4
 pillow==10.4.0
 platformdirs==4.2.2
 prompt_toolkit==3.0.47
+psycopg2-binary==2.9.9
 pure-eval==0.2.2
 Pygments==2.18.0
 six==1.16.0
@@ -32,3 +35,4 @@ tzdata==2024.1
 virtualenv==20.26.2
 virtualenvwrapper-win==1.2.7
 wcwidth==0.2.13
+whitenoise==6.7.0
