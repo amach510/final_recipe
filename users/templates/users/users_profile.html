@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+    <title>User Profile</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f8eff6;
+        }
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            text-align: center;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            background: #eff8f1;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            flex: 1;
+        }
+
+        .navitem {
+            display: block;
+            text-align: center;
+            text-decoration: none;
+            flex: 1;
+        }
+
+        .navitem a {
+            text-decoration: none;
+            color: #000;
+            font-size: 20px;
+        }
+
+        .navitem h1 {
+            font-size: 35px;
+            color: #87723b;
+        }
+
+        main {
+            margin-top: 50px;
+            padding: 10px 150px;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .left {
+            padding-right: 35px;
+        }
+
+        .left img {
+            min-width: 250;
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        .bio {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background-color: #EFF6F8; 
+            border-radius: 10px; 
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        .bio p {
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li class="navitem"><a href="{% url 'recipes:recipes' %}">Recipes</a></li>
+            <li class="navitem"><a href="{% url 'users:profile' %}">Profile</a></li>
+            <li class="navitem"><h1>Recipe App</h1></li>
+            <li class="navitem"><a href ="https://amach510.github.io/portfolio-website/" target="_blank">About Me</a></li>
+            <li class="navitem"><a href ="{%url 'logout' %}"> Logout </a></li>
+        </ul>
+    </nav>
+    <div class="left">
+        <img src="{{ current_user.pic.url }}" alt="no_picture.jpg"/>
+    </div>
+    <div class="bio">
+        <h2>{{ current_user.user }}</h2>
+        <p><strong>Name:</strong> {{ current_user.name }}</p>
+        <p><strong>Bio:</strong><br/>{{ current_user.bio|linebreaksbr }}</p>
+    </div>
+</body>
+</html>

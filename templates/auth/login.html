@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+    <title>Login</title>
+    <link rel="icon" href="{% static 'kawaii_bread_favicon.png' %}" type="image/x-icon">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url("{% static 'recipes/images/recipes_home.jpg' %}");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
+            overflow-x: hidden;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            text-align: center;
+        }
+
+        nav {
+            display: flex;
+            align-items: center; 
+            background: #eff8f1;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            flex: 1; 
+        }
+
+        .navitem {
+            display: block;
+            text-align: center;
+            text-decoration: none;
+            flex: 1;
+        }
+
+        .navitem a {
+            text-decoration: none;
+            color: #000;
+            font-size: 20px;
+        }
+
+        .navitem h1 {
+            font-size: 35px;
+            color: #87723b;
+        }
+
+        main {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .main-box {
+            margin-top: 25vh;
+            padding: 50px 120px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.23);
+            border-radius: 15px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(7px);
+        }
+        
+        .main-box h1{
+            font-size: 40px;
+        }
+
+        .main-box form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .main-box form label{
+            font-size: 18px;
+        }
+
+        .main-box form input{
+            margin-bottom: 15px;
+        }
+
+        .button {
+            margin-top: 10px;
+            padding: 5px 10px;
+            background-color: #426552;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: 0.3s ease-in-out;
+        }
+
+        .button:hover {
+            transform: scale(1.03);
+        }
+
+        .link {
+            text-decoration: none;
+            color: #426552;
+            font-size: 18px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        @media all and (max-width: 800px) {
+            .main-box {
+                margin-top: 30vh;
+                padding: 15px 40px;
+                margin-left: 10px;
+                margin-right: 10px;
+            }
+
+            .main-box h1{
+                font-size: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li class="navitem"><a href="{% url 'recipes:recipes' %}">Recipes</a></li>
+            <li class="navitem"><a href="{% url 'users:profile' %}">Profile</a></li>
+            <li class="navitem"><h1>Recipe App</h1></li>
+            <li class="navitem"><a href ="https://amach510.github.io/portfolio-website/" target="_blank">About Me</a></li>
+            <li class="navitem"><a href="{% url 'users:signup' %}">Sign Up</a></li>
+        </ul>
+    </nav>
+    <main>
+        <div class="main-box">
+            <h1>Login</h1>
+                {% comment %} check for error message {% endcomment %}
+                {% if error_message %}
+                    {{error_message}}
+                {% endif %}
+            <form action="" method="POST" >
+                {% comment %} add Django security token {% endcomment %}
+                {% csrf_token %}   
+                {{form}}           
+                <button type="submit" >Login</button>
+            </form>
+        </div>
+    </main>
+</body>
+</html>
