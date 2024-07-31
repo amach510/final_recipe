@@ -71,6 +71,7 @@
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
             backdrop-filter: blur(7px);
             flex-direction: column;
+            max-width: 1000px;
         }
 
         .main-box form {
@@ -120,17 +121,23 @@
 
         .main-box ul {
             list-style-type: none;
+            padding: 0;
+            margin: 0;
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
+            align-items: center;
         }
 
         .main-box ul li{
             margin: 15px;
+            text-align: center;
         }
 
         .main-box ul li img{
             max-width: 100%;
             height: auto;
+            display: block;
+            margin: 0 auto;
         }
 
         .main-box h2 a{
