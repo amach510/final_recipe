@@ -9,7 +9,7 @@ from .forms import CustomUserCreationForm
 # Create your views here.
 
 class profile(LoginRequiredMixin, DetailView):
-    model: CustomUser
+    model = CustomUser
     template_name = "users/users_profile.html"
     context_object_name = "current_user"
 
