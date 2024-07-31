@@ -14,7 +14,18 @@ class profile(LoginRequiredMixin, DetailView):
     context_object_name = "current_user"
 
     def get_object(self, queryset=None):
-        return CustomUser.objects.get(user=self.request.user)
+        user = self.request.user
+        if user.is_superuser:
+            # Return a default CustomUser or create a default profile if none exists
+            custom_user, created = CustomUser.objects.get_or_create(user=user, defaults={
+                'name': user.username,
+                'pic': 'no_picture.jpg',
+                'bio': 'This is an admin profile.'
+            })
+            return custom_user
+        else:
+            # Handle regular users
+            return CustomUser.objects.get(user=user)
 
 # function to create a user
 def signup_view(request):
